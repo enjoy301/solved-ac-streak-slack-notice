@@ -23,6 +23,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Make secrets.yml
+      run: |
+        echo "bot-token: $BOTTOKEN" >> secrets.yml
+      env:
+        BOTTOKEN: ${{ secrets.BOTTOKEN }}
     - name: Run Python
       run: |
         python slack_notice.py
