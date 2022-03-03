@@ -1,5 +1,7 @@
 from slack_sdk import WebClient
 import yaml
+import datetime
+
 
 class SlackApi:
     def __init__(self, token):
@@ -19,7 +21,7 @@ def main():
         bot_token = config['bot-token']
 
     slack = SlackApi(token=bot_token)
-    response = slack.post_message('test message')
+    response = slack.post_message(str(datetime.datetime.now()))
 
 if __name__ == '__main__':
     main()
