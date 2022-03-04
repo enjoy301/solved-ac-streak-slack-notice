@@ -5,7 +5,7 @@ name: Python application
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/30 * * * *"
   workflow_dispatch:
     
 
@@ -30,4 +30,4 @@ jobs:
         BOTTOKEN: ${{ secrets.BOTTOKEN }}
     - name: Run Python
       run: |
-        python slack_notice.py
+        python main.py
