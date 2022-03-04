@@ -5,12 +5,11 @@ name: Python application
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "0 14 * * *"
   workflow_dispatch:
-    
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
 
     steps:
