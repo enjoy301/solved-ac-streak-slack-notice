@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup as BS
 from urllib import request
 from datetime import datetime
+from datetime import timedelta
 import yaml
 
 
@@ -36,7 +37,7 @@ def get_last_solved_time():
 
 
 def is_solved_today():
-    now_time = datetime.now()
+    now_time = datetime.now() + timedelta(hours=9)
     standard_time_str = str(now_time).split(' ')[0] + ' 06:00:00'
     standard_time = datetime.strptime(standard_time_str, "%Y-%m-%d %H:%M:%S")
 
@@ -51,10 +52,5 @@ def main():
     html_parse()
     get_last_solved_time()
     is_solved = is_solved_today()
-    print(is_solved)
 
     return is_solved
-
-
-if __name__ == '__main__':
-    main()

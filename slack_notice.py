@@ -15,13 +15,11 @@ class SlackApi:
 
         return result
 
-def main():
+def main(messages):
     with open('./secrets.yml') as yml:
         config = yaml.load(yml, Loader=yaml.BaseLoader)
         bot_token = config['bot-token']
 
     slack = SlackApi(token=bot_token)
-    response = slack.post_message(str(datetime.datetime.now()))
-
-if __name__ == '__main__':
-    main()
+    for message in messages:
+        response = slack.post_message(message)
