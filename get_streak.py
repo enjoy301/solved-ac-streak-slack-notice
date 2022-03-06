@@ -8,6 +8,7 @@ import yaml
 user_id = ''
 page = ''
 last_solved_time = datetime.now()
+stadard_time = datetime.now()
 
 
 def get_id():
@@ -37,6 +38,8 @@ def get_last_solved_time():
 
 
 def is_solved_today():
+    global stadard_time
+
     now_time = datetime.now() + timedelta(hours=9)
     standard_time_str = str(now_time).split(' ')[0] + ' 06:00:00'
     standard_time = datetime.strptime(standard_time_str, "%Y-%m-%d %H:%M:%S")
@@ -53,4 +56,4 @@ def main():
     get_last_solved_time()
     is_solved = is_solved_today()
 
-    return is_solved
+    return is_solved, last_solved_time, stadard_time
