@@ -1,7 +1,11 @@
 import slack_notice
-import get_streak
+from get_streak import Streak
 
 
-is_solved, last_solved_time, standard_time = get_streak.main()
+streak = Streak()
+streak.get_id()
+streak.html_parse()
+streak.get_last_solved_time()
+streak.is_solved_today()
 
-slack_notice.main(['NOT SOLVED TODAY', 'https://solved.ac/', is_solved, last_solved_time.strftime("%Y/%m/%d, %H:%M:%S"), standard_time.strftime("%Y/%m/%d, %H:%M:%S")])
+slack_notice.main(['NOT SOLVED TODAY', 'https://solved.ac/', streak.is_solved, streak.last_solved_time.strftime("%Y/%m/%d, %H:%M:%S"), streak.standard_time.strftime("%Y/%m/%d, %H:%M:%S")])
