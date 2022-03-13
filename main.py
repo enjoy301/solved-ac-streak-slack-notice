@@ -1,4 +1,4 @@
-import slack_notice
+from slack_notice import SlackApi
 from get_streak import Streak
 
 
@@ -8,5 +8,9 @@ streak.html_parse()
 streak.get_last_solved_time()
 streak.is_solved_today()
 
+slack = SlackApi()
+slack.get_bot_token()
+slack.create_instance()
+
 if not streak.is_solved:
-    slack_notice.main(['NOT SOLVED TODAY!!', 'https://solved.ac/'])
+    slack.post_messages(['NOT SOLVED TODAY!!', 'https://solved.ac/'])
